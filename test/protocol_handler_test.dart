@@ -17,7 +17,7 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await ProtocolHandler.platformVersion, '42');
-  });
+  // test('getPlatformVersion', () async {
+  //   expect(await ProtocolHandler.platformVersion, '42');
+  // });
 }
