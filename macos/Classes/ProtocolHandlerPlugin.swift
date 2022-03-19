@@ -1,8 +1,8 @@
 import Cocoa
 import FlutterMacOS
 
-public class ProtocolHandlerPlugin: NSObject, FlutterPlugin, FlutterStreamHandler  {
-    private var _eventSink: FlutterEventSink?
+public class ProtocolHandlerPlugin: NSObject, FlutterPlugin  {
+    private var channel: FlutterMethodChannel!
     
     override init(){
         super.init();
@@ -10,19 +10,20 @@ public class ProtocolHandlerPlugin: NSObject, FlutterPlugin, FlutterStreamHandle
     }
     
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let instance = ProtocolHandlerPlugin()
-        
         let channel = FlutterMethodChannel(name: "protocol_handler", binaryMessenger: registrar.messenger)
+        let instance = ProtocolHandlerPlugin()
+        instance.channel = channel
         registrar.addMethodCallDelegate(instance, channel: channel)
-        
-        let eventChannel = FlutterEventChannel(name: "protocol_handler/events", binaryMessenger: registrar.messenger)
-        eventChannel.setStreamHandler(instance)
     }
     
     @objc
     private func handleURLEvent(_ event: NSAppleEventDescriptor, with replyEvent: NSAppleEventDescriptor) {
         guard let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue else { return }
-        _eventSink!(urlString);
+        
+        let args: NSDictionary = [
+            "url": urlString,
+        ]
+        channel.invokeMethod("onProtocolUrlReceived", arguments: args, result: nil)
     }
     
     public func application(_ application: NSApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([NSUserActivityRestoring]) -> Void) -> Bool {
@@ -37,15 +38,5 @@ public class ProtocolHandlerPlugin: NSObject, FlutterPlugin, FlutterStreamHandle
         default:
             result(FlutterMethodNotImplemented)
         }
-    }
-    
-    public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
-        self._eventSink = events;
-        return nil
-    }
-    
-    public func onCancel(withArguments arguments: Any?) -> FlutterError? {
-        self._eventSink = nil
-        return nil
     }
 }
