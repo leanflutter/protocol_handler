@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:protocol_handler/protocol_handler.dart';
+import 'package:window_manager/window_manager.dart';
 
 import './pages/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await windowManager.ensureInitialized();
+
+  windowManager.waitUntilReadyToShow().then((_) async {
+    await windowManager.setSize(const Size(600, 400));
+    await windowManager.center();
+    await windowManager.show();
+  });
 
   await protocolHandler.register('myprotocol');
 

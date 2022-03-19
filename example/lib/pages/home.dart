@@ -2,6 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:preference_list/preference_list.dart';
 import 'package:protocol_handler/protocol_handler.dart';
+import 'package:window_manager/window_manager.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,6 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with ProtocolListener {
+  bool _isAlwaysOnTop = false;
+
   final List<String> _receivedUrlList = [];
 
   @override
@@ -28,6 +31,19 @@ class _HomePageState extends State<HomePage> with ProtocolListener {
   Widget _buildBody(BuildContext context) {
     return PreferenceList(
       children: <Widget>[
+        PreferenceListSection(
+          children: [
+            PreferenceListSwitchItem(
+              title: const Text('setAlwaysOnTop'),
+              value: _isAlwaysOnTop,
+              onChanged: (newValue) async {
+                _isAlwaysOnTop = newValue;
+                await windowManager.setAlwaysOnTop(_isAlwaysOnTop);
+                setState(() {});
+              },
+            ),
+          ],
+        ),
         PreferenceListSection(
           title: const Text('Received urls'),
           children: [
