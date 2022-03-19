@@ -1,20 +1,58 @@
 import 'dart:async';
 
-import 'method_channel/method_channel_protocol_handler.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+
+import 'protocol_listener.dart';
+import 'protocol_registrar.dart';
 
 class ProtocolHandler {
-  ProtocolHandler._();
+  ProtocolHandler._() {
+    _channel.setMethodCallHandler(_methodCallHandler);
+  }
 
   /// The shared instance of [ProtocolHandler].
   static final ProtocolHandler instance = ProtocolHandler._();
 
-  final MethodChannelProtocolHandler _methodChannel =
-      MethodChannelProtocolHandler();
+  final MethodChannel _channel = const MethodChannel('protocol_handler');
 
-  Stream<String?> register({
-    required String protocol,
-  }) {
-    return _methodChannel.protocolStream;
+  final ObserverList<ProtocolListener> _listeners =
+      ObserverList<ProtocolListener>();
+
+  Future<void> _methodCallHandler(MethodCall call) async {
+    for (final ProtocolListener listener in listeners) {
+      if (!_listeners.contains(listener)) {
+        return;
+      }
+
+      if (call.method == 'onProtocolUrlReceived') {
+        listener.onProtocolUrlReceived(call.arguments['url']);
+      } else {
+        throw UnimplementedError();
+      }
+    }
+  }
+
+  List<ProtocolListener> get listeners {
+    final List<ProtocolListener> localListeners =
+        List<ProtocolListener>.from(_listeners);
+    return localListeners;
+  }
+
+  bool get hasListeners {
+    return _listeners.isNotEmpty;
+  }
+
+  void addListener(ProtocolListener listener) {
+    _listeners.add(listener);
+  }
+
+  void removeListener(ProtocolListener listener) {
+    _listeners.remove(listener);
+  }
+
+  Future<void> register(String scheme) {
+    return protocolRegistrar.register(scheme);
   }
 }
 

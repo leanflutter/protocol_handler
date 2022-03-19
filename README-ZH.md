@@ -8,11 +8,11 @@
 [discord-image]: https://img.shields.io/discord/884679008049037342.svg
 [discord-url]: https://discord.gg/zPa6EZ2jqb
 
-This plugin allows Flutter **desktop** apps to register and handle custom protocols (i.e. deep linking).
+这个插件允许 Flutter **桌面** 应用注册及处理自定义协议（即深度链接）。
 
 ---
 
-English | [简体中文](./README-ZH.md)
+[English](./README.md) | 简体中文
 
 ---
 
@@ -20,36 +20,36 @@ English | [简体中文](./README-ZH.md)
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [protocol_handler](#protocol_handler)
-  - [Platform Support](#platform-support)
-  - [Quick Start](#quick-start)
-    - [Installation](#installation)
-    - [Usage](#usage)
+  - [平台支持](#平台支持)
+  - [快速开始](#快速开始)
+    - [安装](#安装)
+    - [用法](#用法)
         - [macOS](#macos)
         - [Windows](#windows)
-    - [Listening events](#listening-events)
-  - [Who's using it?](#whos-using-it)
-  - [License](#license)
+    - [监听事件](#监听事件)
+  - [谁在用使用它？](#谁在用使用它)
+  - [许可证](#许可证)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Platform Support
+## 平台支持
 
 | Linux | macOS | Windows |
 | :---: | :---: | :-----: |
 |   ➖   |   ✔️   |    ✔️    |
 
-## Quick Start
+## 快速开始
 
-### Installation
+### 安装
 
-Add this to your package's pubspec.yaml file:
+将此添加到你的软件包的 pubspec.yaml 文件：
 
 ```yaml
 dependencies:
   protocol_handler: ^0.1.0
 ```
 
-Or
+或
 
 ```yaml
 dependencies:
@@ -59,11 +59,11 @@ dependencies:
       ref: main
 ```
 
-### Usage
+### 用法
 
 ##### macOS
 
-Change the file `macos/Runner/Info.plist` as follows:
+更改文件 `macos/Runner/Info.plist` 如下：
 
 ```diff
 <?xml version="1.0" encoding="UTF-8"?>
@@ -116,7 +116,7 @@ Change the file `macos/Runner/Info.plist` as follows:
 
 ##### Windows
 
-Change the file `windows/runner/main.cpp` as follows:
+更改文件 `windows/runner/main.cpp` 如下：
 
 ```diff
 #include <flutter/dart_project.h>
@@ -179,18 +179,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
 import 'package:protocol_handler/protocol_handler.dart';
 
 void main() async {
-  // Must add this line.
+  // 必须加上这一行。
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Register a custom protocol
-  // For macOS platform needs to declare the scheme in ios/Runner/Info.plist
+  // 注册一个自定义协议。
+  // 对于 macOS 平台需要在 ios/Runner/Info.plist 中声明 scheme。
   await protocolHandler.register('myprotocol');
 
   runApp(MyApp());
 }
 ```
 
-### Listening events
+### 监听事件
 
 ```dart
 class HomePage extends StatefulWidget {
@@ -226,12 +226,12 @@ class _HomePageState extends State<HomePage> with ProtocolListener {
 }
 ```
 
-> Please see the example app of this plugin for a full example.
+> 请看这个插件的示例应用，以了解完整的例子。
 
-## Who's using it?
+## 谁在用使用它？
 
-- [Biyi](https://biyidev.com/) - A convenient translation and dictionary app.
+- [比译](https://biyidev.com/) - 一个便捷的翻译和词典应用程序。
 
-## License
+## 许可证
 
 [MIT](./LICENSE)
