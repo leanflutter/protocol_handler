@@ -46,7 +46,7 @@
 
 ```yaml
 dependencies:
-  protocol_handler: ^0.1.0
+  protocol_handler: ^0.1.1
 ```
 
 或
