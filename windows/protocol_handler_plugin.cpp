@@ -3,9 +3,6 @@
 // This must be included before many other Windows headers.
 #include <windows.h>
 
-// For getPlatformVersion; remove unless needed for your plugin implementation.
-#include <VersionHelpers.h>
-
 #include <flutter/method_channel.h>
 #include <flutter/plugin_registrar_windows.h>
 #include <flutter/standard_method_codec.h>
@@ -28,6 +25,8 @@ class ProtocolHandlerPlugin : public flutter::Plugin {
   flutter::MethodChannel<flutter::EncodableValue>* channel() const {
     return channel_.get();
   }
+
+  std::string ProtocolHandlerPlugin::GetInitialUrl();
 
   virtual ~ProtocolHandlerPlugin();
 
@@ -102,20 +101,25 @@ std::optional<LRESULT> ProtocolHandlerPlugin::HandleWindowProc(HWND hwnd,
   return std::nullopt;
 }
 
+std::string ProtocolHandlerPlugin::GetInitialUrl() {
+  int argc;
+  wchar_t** argv = ::CommandLineToArgvW(::GetCommandLineW(), &argc);
+  if (argv == nullptr || argc < 2) {
+    return "";
+  }
+
+  std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+  std::string url = converter.to_bytes(argv[1]);
+  ::LocalFree(argv);
+  return url;
+}
+
 void ProtocolHandlerPlugin::HandleMethodCall(
     const flutter::MethodCall<flutter::EncodableValue>& method_call,
     std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result) {
-  if (method_call.method_name().compare("getPlatformVersion") == 0) {
-    std::ostringstream version_stream;
-    version_stream << "Windows ";
-    if (IsWindows10OrGreater()) {
-      version_stream << "10+";
-    } else if (IsWindows8OrGreater()) {
-      version_stream << "8";
-    } else if (IsWindows7OrGreater()) {
-      version_stream << "7";
-    }
-    result->Success(flutter::EncodableValue(version_stream.str()));
+  if (method_call.method_name().compare("getInitialUrl") == 0) {
+    std::string value = GetInitialUrl();
+    result->Success(flutter::EncodableValue(value.c_str()));
   } else {
     result->NotImplemented();
   }
