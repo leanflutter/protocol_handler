@@ -51,8 +51,15 @@ class ProtocolHandler {
     _listeners.remove(listener);
   }
 
+  /// Register a custom protocol
   Future<void> register(String scheme) {
     return protocolRegistrar.register(scheme);
+  }
+
+  /// If the app launch was triggered by an protocol, it will give the link url, otherwise it will give null.
+  Future<String?> getInitialUrl() async {
+    String initialUrl = await _channel.invokeMethod('getInitialUrl');
+    return initialUrl.isEmpty ? null : initialUrl;
   }
 }
 

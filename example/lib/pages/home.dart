@@ -14,18 +14,26 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with ProtocolListener {
   bool _isAlwaysOnTop = false;
 
+  String? _initialUrl = '';
   final List<String> _receivedUrlList = [];
 
   @override
   void initState() {
     protocolHandler.addListener(this);
     super.initState();
+
+    _init();
   }
 
   @override
   void dispose() {
     protocolHandler.removeListener(this);
     super.dispose();
+  }
+
+  void _init() async {
+    _initialUrl = await protocolHandler.getInitialUrl();
+    setState(() {});
   }
 
   Widget _buildBody(BuildContext context) {
@@ -39,6 +47,20 @@ class _HomePageState extends State<HomePage> with ProtocolListener {
               onChanged: (newValue) async {
                 _isAlwaysOnTop = newValue;
                 await windowManager.setAlwaysOnTop(_isAlwaysOnTop);
+                setState(() {});
+              },
+            ),
+          ],
+        ),
+        PreferenceListSection(
+          title: const Text('initialUrl'),
+          children: [
+            PreferenceListItem(
+              padding: const EdgeInsets.all(12),
+              title: Text('${_initialUrl}'),
+              accessoryView: Container(),
+              onTap: () async {
+                _initialUrl = await protocolHandler.getInitialUrl();
                 setState(() {});
               },
             ),
