@@ -21,6 +21,8 @@ English | [简体中文](./README-ZH.md)
 
 - [protocol_handler](#protocol_handler)
   - [Platform Support](#platform-support)
+    - [Desktop](#desktop)
+    - [Mobile](#mobile)
   - [Quick Start](#quick-start)
     - [Installation](#installation)
     - [Usage](#usage)
@@ -34,9 +36,17 @@ English | [简体中文](./README-ZH.md)
 
 ## Platform Support
 
+### Desktop
+
 | Linux | macOS | Windows |
 | :---: | :---: | :-----: |
 |   ➖   |   ✔️   |    ✔️    |
+
+### Mobile
+
+| Android |  iOS  |
+| :-----: | :---: |
+|    ➖    |   ✔️   |
 
 ## Quick Start
 

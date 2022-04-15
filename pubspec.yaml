@@ -1,9 +1,10 @@
 name: protocol_handler
 description: This plugin allows Flutter desktop apps to register and handle custom protocols (i.e. deep linking).
-version: 0.1.1
+version: 0.1.2
 homepage: https://github.com/leanflutter/protocol_handler
 
 platforms:
+  ios:
   macos:
   windows:
 
@@ -25,6 +26,8 @@ dev_dependencies:
 flutter:
   plugin:
     platforms:
+      ios:
+        pluginClass: ProtocolHandlerPlugin
       macos:
         pluginClass: ProtocolHandlerPlugin
       windows:
