@@ -46,7 +46,7 @@ English | [简体中文](./README-ZH.md)
 
 | Android |  iOS  |
 | :-----: | :---: |
-|    ➖    |   ✔️   |
+|    ✔️    |   ✔️   |
 
 ## Quick Start
 

@@ -26,6 +26,9 @@ dev_dependencies:
 flutter:
   plugin:
     platforms:
+      android:
+        package: org.leanflutter.plugins.protocol_handler
+        pluginClass: ProtocolHandlerPlugin
       ios:
         pluginClass: ProtocolHandlerPlugin
       macos:
