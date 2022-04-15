@@ -1,6 +1,6 @@
 ## 0.1.2
 
-- Support ios platform.
+- Support android & ios platform.
 
 ## 0.1.1
 
