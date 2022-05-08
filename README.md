@@ -21,8 +21,7 @@ English | [简体中文](./README-ZH.md)
 
 - [protocol_handler](#protocol_handler)
   - [Platform Support](#platform-support)
-    - [Desktop](#desktop)
-    - [Mobile](#mobile)
+  - [Screenshots](#screenshots)
   - [Quick Start](#quick-start)
     - [Installation](#installation)
     - [Usage](#usage)
@@ -38,17 +37,13 @@ English | [简体中文](./README-ZH.md)
 
 ## Platform Support
 
-### Desktop
+| Android |  iOS  | Linux | macOS | Windows |
+| :-----: | :---: | :---: | :---: | :-----: |
+|    ✔️    |   ✔️   |   ➖   |   ✔️   |    ✔️    |
 
-| Linux | macOS | Windows |
-| :---: | :---: | :-----: |
-|   ➖   |   ✔️   |    ✔️    |
+## Screenshots
 
-### Mobile
-
-| Android |  iOS  |
-| :-----: | :---: |
-|    ✔️    |   ✔️   |
+https://user-images.githubusercontent.com/3889523/167283452-aff2535b-c322-45c7-949f-d1c80c2e4a60.mp4
 
 ## Quick Start
 
