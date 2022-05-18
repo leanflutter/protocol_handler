@@ -1,3 +1,7 @@
+## 0.1.3
+
+- [windows] fix startup crash when argc is 1 #4
+
 ## 0.1.2
 
 - Support android & ios platform.
