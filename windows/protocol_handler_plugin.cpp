@@ -137,7 +137,7 @@ void ProtocolHandlerPluginRegisterWithRegistrar(
 void DispatchToProtocolHandler(HWND hwnd) {
   int argc;
   wchar_t** argv = ::CommandLineToArgvW(::GetCommandLineW(), &argc);
-  if (argv == nullptr) {
+  if (argv == nullptr || argc < 2) {
     return;
   }
 
