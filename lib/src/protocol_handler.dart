@@ -2,9 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-
-import 'protocol_listener.dart';
-import 'protocol_registrar.dart';
+import 'package:protocol_handler/src/protocol_listener.dart';
+import 'package:protocol_handler/src/protocol_registrar.dart';
 
 class ProtocolHandler {
   ProtocolHandler._() {

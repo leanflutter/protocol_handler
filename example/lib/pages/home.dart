@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> with ProtocolListener {
           children: [
             PreferenceListItem(
               padding: const EdgeInsets.all(12),
-              title: Text('${_initialUrl}'),
+              title: Text('$_initialUrl'),
               accessoryView: Container(),
               onTap: () async {
                 _initialUrl = await protocolHandler.getInitialUrl();

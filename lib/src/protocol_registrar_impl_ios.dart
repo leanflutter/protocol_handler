@@ -1,4 +1,4 @@
-import 'protocol_registrar.dart';
+import 'package:protocol_handler/src/protocol_registrar.dart';
 
 class ProtocolRegistrarImplIOS extends ProtocolRegistrar {
   ProtocolRegistrarImplIOS._();
@@ -7,7 +7,7 @@ class ProtocolRegistrarImplIOS extends ProtocolRegistrar {
   static final ProtocolRegistrarImplIOS instance = ProtocolRegistrarImplIOS._();
 
   @override
-  Future<void> register(String protocol) async {
+  Future<void> register(String scheme) async {
     // Skip
   }
 }

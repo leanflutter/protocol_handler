@@ -1,17 +1,24 @@
 import 'dart:io';
 
-import 'protocol_registrar_impl_android.dart';
-import 'protocol_registrar_impl_ios.dart';
-import 'protocol_registrar_impl_macos.dart';
-import 'protocol_registrar_impl_windows.dart';
+import 'package:flutter/foundation.dart';
+import 'package:protocol_handler/src/protocol_registrar_impl_android.dart';
+import 'package:protocol_handler/src/protocol_registrar_impl_ios.dart';
+import 'package:protocol_handler/src/protocol_registrar_impl_macos.dart';
+import 'package:protocol_handler/src/protocol_registrar_impl_windows.dart'
+    if (dart.library.html) 'package:protocol_handler/src/protocol_registrar_impl_windows_noop.dart';
 
 class ProtocolRegistrar {
   /// The shared instance of [ProtocolRegistrar].
   static ProtocolRegistrar get instance {
-    if (Platform.isAndroid) return ProtocolRegistrarImplAndroid.instance;
-    if (Platform.isIOS) return ProtocolRegistrarImplIOS.instance;
-    if (Platform.isMacOS) return ProtocolRegistrarImplMacOS.instance;
-    if (Platform.isWindows) return ProtocolRegistrarImplWindows.instance;
+    if (!kIsWeb && Platform.isAndroid) {
+      return ProtocolRegistrarImplAndroid.instance;
+    } else if (!kIsWeb && Platform.isIOS) {
+      return ProtocolRegistrarImplIOS.instance;
+    } else if (!kIsWeb && Platform.isMacOS) {
+      return ProtocolRegistrarImplMacOS.instance;
+    } else if (!kIsWeb && Platform.isWindows) {
+      return ProtocolRegistrarImplWindows.instance;
+    }
     return ProtocolRegistrar();
   }
 

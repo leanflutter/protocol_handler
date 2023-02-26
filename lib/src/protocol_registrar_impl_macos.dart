@@ -1,4 +1,4 @@
-import 'protocol_registrar.dart';
+import 'package:protocol_handler/src/protocol_registrar.dart';
 
 class ProtocolRegistrarImplMacOS extends ProtocolRegistrar {
   ProtocolRegistrarImplMacOS._();
@@ -8,7 +8,7 @@ class ProtocolRegistrarImplMacOS extends ProtocolRegistrar {
       ProtocolRegistrarImplMacOS._();
 
   @override
-  Future<void> register(String protocol) async {
+  Future<void> register(String scheme) async {
     // Skip
   }
 }
