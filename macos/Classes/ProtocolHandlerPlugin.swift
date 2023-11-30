@@ -1,7 +1,7 @@
 import Cocoa
 import FlutterMacOS
 
-public class ProtocolHandlerPlugin: NSObject, FlutterPlugin  {
+public class ProtocolHandlerPlugin: NSObject, FlutterPlugin,FlutterAppLifecycleDelegate  {
     private static var _instance: ProtocolHandlerPlugin?
     private var channel: FlutterMethodChannel!
     private var _initialUrl: String?
@@ -12,18 +12,22 @@ public class ProtocolHandlerPlugin: NSObject, FlutterPlugin  {
       }
     }
     
-    override init(){
-        super.init();
-        NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(handleURLEvent(_:with:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
-    }
-    
-    public static func register(with registrar: FlutterPluginRegistrar) {
+     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "protocol_handler", binaryMessenger: registrar.messenger)
         let instance = ProtocolHandlerPlugin()
         _instance = instance
         instance.channel = channel
         registrar.addMethodCallDelegate(instance, channel: channel)
+        registrar.addApplicationDelegate(instance)
     }
+    public func handleWillFinishLaunching(_ notification: Notification) {
+    NSAppleEventManager.shared().setEventHandler(
+      self,
+      andSelector: #selector(handleURLEvent(_:with:)),
+      forEventClass: AEEventClass(kInternetEventClass),
+      andEventID: AEEventID(kAEGetURL)
+    )
+  }
     
     @objc
     public func handleURLEvent(_ event: NSAppleEventDescriptor, with replyEvent: NSAppleEventDescriptor) {
