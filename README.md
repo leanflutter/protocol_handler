@@ -55,7 +55,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  protocol_handler: ^0.1.5
+  protocol_handler: ^0.1.6
 ```
 
 Or

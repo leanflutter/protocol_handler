@@ -1,3 +1,7 @@
+## 0.1.6
+
+* fix: macos 3.16 plugin register issue #13
+
 ## 0.1.5
 
 * Make sure the web project build

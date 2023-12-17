@@ -55,7 +55,7 @@ https://user-images.githubusercontent.com/3889523/167283452-aff2535b-c322-45c7-9
 
 ```yaml
 dependencies:
-  protocol_handler: ^0.1.5
+  protocol_handler: ^0.1.6
 ```
 
 或
