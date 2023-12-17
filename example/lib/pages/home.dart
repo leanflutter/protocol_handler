@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> with ProtocolListener {
 
   @override
   void onProtocolUrlReceived(String url) {
-    String log = 'Url received: $url)';
+    String log = 'Url received: $url';
     BotToast.showText(text: log);
 
     setState(() {
