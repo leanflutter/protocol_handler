@@ -22,7 +22,16 @@ abstract class ProtocolHandlerPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
+  Stream<String?> get onUrlReceived;
+
+  /// Register the protocol scheme.
+  Future<void> register(String scheme) {
+    throw UnimplementedError('register() has not been implemented.');
+  }
+
+  /// If the app launch was triggered by an protocol, it will give the link url,
+  /// otherwise it will give null.
+  Future<String?> getInitialUrl() {
+    throw UnimplementedError('getInitialUrl() has not been implemented.');
   }
 }

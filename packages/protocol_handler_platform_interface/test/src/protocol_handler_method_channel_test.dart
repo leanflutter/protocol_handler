@@ -6,14 +6,15 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   MethodChannelProtocolHandler platform = MethodChannelProtocolHandler();
-  const MethodChannel channel = MethodChannel('protocol_handler');
+  const MethodChannel channel =
+      MethodChannel('dev.leanflutter.plugins/protocol_handler');
 
   setUp(() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(
       channel,
       (MethodCall methodCall) async {
-        return '42';
+        return 'myprotocol://hello';
       },
     );
   });
@@ -23,7 +24,7 @@ void main() {
         .setMockMethodCallHandler(channel, null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await platform.getPlatformVersion(), '42');
+  test('getInitialUrl', () async {
+    expect(await platform.getInitialUrl(), 'myprotocol://hello');
   });
 }

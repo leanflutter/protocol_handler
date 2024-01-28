@@ -10,10 +10,25 @@ class MethodChannelProtocolHandler extends ProtocolHandlerPlatform {
     'dev.leanflutter.plugins/protocol_handler',
   );
 
+  /// The event channel used to receive events from the native platform.
+  @visibleForTesting
+  final eventChannel = const EventChannel(
+    'dev.leanflutter.plugins/protocol_handler_event',
+  );
+
   @override
-  Future<String?> getPlatformVersion() async {
-    final version =
-        await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
+  Stream<String?> get onUrlReceived {
+    return eventChannel.receiveBroadcastStream().cast<String?>();
+  }
+
+  @override
+  Future<void> register(String scheme) {
+    return Future(() => null);
+  }
+
+  @override
+  Future<String?> getInitialUrl() async {
+    String initialUrl = await methodChannel.invokeMethod('getInitialUrl');
+    return initialUrl.isEmpty ? null : initialUrl;
   }
 }
