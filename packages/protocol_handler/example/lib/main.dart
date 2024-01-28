@@ -1,26 +1,30 @@
-import 'dart:io';
-
 import 'package:bot_toast/bot_toast.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:protocol_handler/protocol_handler.dart';
 import 'package:protocol_handler_example/pages/home.dart';
+import 'package:uni_platform/uni_platform.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  if (!kIsWeb && (Platform.isLinux || Platform.isMacOS || Platform.isWindows)) {
-    await windowManager.ensureInitialized();
-    windowManager.waitUntilReadyToShow().then((_) async {
-      await windowManager.setSize(const Size(600, 400));
-      await windowManager.center();
-      await windowManager.show();
-    });
-
-    await protocolHandler.register('myprotocol');
-  }
-
+  await UniPlatform.call<Future<void>>(
+    desktop: () async {
+      await windowManager.ensureInitialized();
+      const windowOptions = WindowOptions(
+        size: Size(1024, 768),
+        center: true,
+      );
+      windowManager.waitUntilReadyToShow(
+        windowOptions,
+        () {
+          windowManager.show();
+        },
+      );
+      // Register a custom protocol
+      await protocolHandler.register('myprotocol');
+    },
+    otherwise: () => Future.value(),
+  );
   runApp(const MyApp());
 }
 

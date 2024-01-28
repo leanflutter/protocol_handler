@@ -7,23 +7,19 @@ on:
     branches: [main]
 
 jobs:
-  build-linux:
-    runs-on: ubuntu-latest
+  build-android:
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.16.8"
           channel: "stable"
-      - run: |
-          sudo apt-get update
-          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
-          sudo apt-get install -y keybinder-3.0
       - uses: bluefireteam/melos-action@v2
       - working-directory: ./packages/protocol_handler/example
         run: |
           melos bs
-          flutter build linux --release
+          flutter build apk --release
 
   build-macos:
     runs-on: macos-latest

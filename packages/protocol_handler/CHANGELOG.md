@@ -1,3 +1,8 @@
+## 0.2.0
+
+* feat: Convert to federated plugin
+* fix: Fix iOS platform handler issue #7
+
 ## 0.1.6
 
 * fix: macos 3.16 plugin register issue #13
