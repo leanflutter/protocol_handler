@@ -1,13 +1,11 @@
 # protocol_handler
 
-[![pub version][pub-image]][pub-url] [![][discord-image]][discord-url] ![][visits-count-image] 
+[![pub version][pub-image]][pub-url] [![][discord-image]][discord-url] ![][visits-count-image]
 
 [pub-image]: https://img.shields.io/pub/v/protocol_handler.svg
 [pub-url]: https://pub.dev/packages/protocol_handler
-
 [discord-image]: https://img.shields.io/discord/884679008049037342.svg
 [discord-url]: https://discord.gg/zPa6EZ2jqb
-
 [visits-count-image]: https://img.shields.io/badge/dynamic/json?label=Visits%20Count&query=value&url=https://api.countapi.xyz/hit/leanflutter.protocol_handler/visits
 
 This plugin allows Flutter apps to register and handle custom protocols (i.e. deep linking).
@@ -21,27 +19,26 @@ English | [简体中文](./README-ZH.md)
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [protocol\_handler](#protocol_handler)
-  - [Platform Support](#platform-support)
-  - [Screenshots](#screenshots)
-  - [Quick Start](#quick-start)
-    - [Installation](#installation)
-    - [Usage](#usage)
-        - [Android](#android)
-        - [iOS](#ios)
-        - [macOS](#macos)
-        - [Windows](#windows)
-    - [Listening events](#listening-events)
-  - [Who's using it?](#whos-using-it)
-  - [License](#license)
+- [Platform Support](#platform-support)
+- [Screenshots](#screenshots)
+- [Quick Start](#quick-start)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Android](#android)
+    - [iOS](#ios)
+    - [macOS](#macos)
+    - [Windows](#windows)
+  - [Listening events](#listening-events)
+- [Who's using it?](#whos-using-it)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Platform Support
 
-| Android |  iOS  | Linux | macOS | Windows |
-| :-----: | :---: | :---: | :---: | :-----: |
-|    ✔️    |   ✔️   |   ➖   |   ✔️   |    ✔️    |
+| Android | iOS | Linux | macOS | Windows |
+| :-----: | :-: | :---: | :---: | :-----: |
+|   ✔️    | ✔️  |  ➖   |  ✔️   |   ✔️    |
 
 ## Screenshots
 
@@ -55,7 +52,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  protocol_handler: ^0.1.6
+  protocol_handler: ^0.2.0
 ```
 
 Or
@@ -238,7 +235,6 @@ Change the file `macos/Runner/Info.plist` as follows:
 	<string>NSApplication</string>
 </dict>
 </plist>
-}
 ```
 
 ##### Windows
@@ -303,6 +299,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
 }
 ```
 
+If you use `MSIX` to package your application, you need to add `protocol_activation` configuration in `msix_config`:
+
+```yaml
+msix_config:
+  protocol_activation: myprotocol
+```
+
+> See this issue for details: [YehudaKremer/msix#187](https://github.com/YehudaKremer/msix/issues/187)
+
 ```dart
 import 'package:protocol_handler/protocol_handler.dart';
 
@@ -325,7 +330,7 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> with ProtocolListener {

@@ -1,13 +1,11 @@
 # protocol_handler
 
-[![pub version][pub-image]][pub-url] [![][discord-image]][discord-url] ![][visits-count-image] 
+[![pub version][pub-image]][pub-url] [![][discord-image]][discord-url] ![][visits-count-image]
 
 [pub-image]: https://img.shields.io/pub/v/protocol_handler.svg
 [pub-url]: https://pub.dev/packages/protocol_handler
-
 [discord-image]: https://img.shields.io/discord/884679008049037342.svg
 [discord-url]: https://discord.gg/zPa6EZ2jqb
-
 [visits-count-image]: https://img.shields.io/badge/dynamic/json?label=Visits%20Count&query=value&url=https://api.countapi.xyz/hit/leanflutter.protocol_handler/visits
 
 这个插件允许 Flutter 应用注册及处理自定义协议（即深度链接）。
@@ -21,27 +19,26 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [protocol\_handler](#protocol_handler)
-  - [平台支持](#平台支持)
-  - [截图](#截图)
-  - [快速开始](#快速开始)
-    - [安装](#安装)
-    - [用法](#用法)
-        - [Android](#android)
-        - [iOS](#ios)
-        - [macOS](#macos)
-        - [Windows](#windows)
-    - [监听事件](#监听事件)
-  - [谁在用使用它？](#谁在用使用它)
-  - [许可证](#许可证)
+- [平台支持](#%E5%B9%B3%E5%8F%B0%E6%94%AF%E6%8C%81)
+- [截图](#%E6%88%AA%E5%9B%BE)
+- [快速开始](#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B)
+  - [安装](#%E5%AE%89%E8%A3%85)
+  - [用法](#%E7%94%A8%E6%B3%95)
+      - [Android](#android)
+      - [iOS](#ios)
+      - [macOS](#macos)
+      - [Windows](#windows)
+  - [监听事件](#%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6)
+- [谁在用使用它？](#%E8%B0%81%E5%9C%A8%E7%94%A8%E4%BD%BF%E7%94%A8%E5%AE%83)
+- [许可证](#%E8%AE%B8%E5%8F%AF%E8%AF%81)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## 平台支持
 
-| Android |  iOS  | Linux | macOS | Windows |
-| :-----: | :---: | :---: | :---: | :-----: |
-|    ✔️    |   ✔️   |   ➖   |   ✔️   |    ✔️    |
+| Android | iOS | Linux | macOS | Windows |
+| :-----: | :-: | :---: | :---: | :-----: |
+|   ✔️    | ✔️  |  ➖   |  ✔️   |   ✔️    |
 
 ## 截图
 
@@ -55,7 +52,7 @@ https://user-images.githubusercontent.com/3889523/167283452-aff2535b-c322-45c7-9
 
 ```yaml
 dependencies:
-  protocol_handler: ^0.1.6
+  protocol_handler: ^0.2.0
 ```
 
 或
@@ -69,6 +66,7 @@ dependencies:
 ```
 
 ### 用法
+
 ##### Android
 
 更改文件 `android/app/src/main/AndroidManifest.xml` 如下：
@@ -237,7 +235,6 @@ dependencies:
 	<string>NSApplication</string>
 </dict>
 </plist>
-}
 ```
 
 ##### Windows
@@ -302,6 +299,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
 }
 ```
 
+如果你使用 `MSIX` 打包应用，需要在 `msix_config` 中添加 `protocol_activation` 配置：
+
+```yaml
+msix_config:
+  protocol_activation: myprotocol
+```
+
 ```dart
 import 'package:protocol_handler/protocol_handler.dart';
 
@@ -324,7 +328,7 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> with ProtocolListener {
