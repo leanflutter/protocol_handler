@@ -1,17 +1,28 @@
 import Flutter
 import UIKit
 
-public class SwiftProtocolHandlerPlugin: NSObject, FlutterPlugin {
-    private var channel: FlutterMethodChannel!
+public class ProtocolHandlerIosPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
+    private var _eventSink: FlutterEventSink?
     
     private var _initialUrl: String?
     
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "dev.leanflutter.plugins/protocol_handler", binaryMessenger: registrar.messenger())
-        let instance = SwiftProtocolHandlerPlugin()
-        instance.channel = channel
+        let instance = ProtocolHandlerIosPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
         registrar.addApplicationDelegate(instance)
+        let eventChannel = FlutterEventChannel(name: "dev.leanflutter.plugins/protocol_handler_event", binaryMessenger: registrar.messenger())
+        eventChannel.setStreamHandler(instance)
+    }
+    
+    public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
+        self._eventSink = events
+        return nil;
+    }
+    
+    public func onCancel(withArguments arguments: Any?) -> FlutterError? {
+        self._eventSink = nil
+        return nil
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -33,10 +44,10 @@ public class SwiftProtocolHandlerPlugin: NSObject, FlutterPlugin {
     }
     
     public func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        let args: NSDictionary = [
-            "url": url.absoluteString,
-        ]
-        channel.invokeMethod("onProtocolUrlReceived", arguments: args, result: nil)
-        return true
+        guard let eventSink = self._eventSink else {
+            return false
+        }
+        eventSink(url.absoluteString)
+        return false
     }
 }

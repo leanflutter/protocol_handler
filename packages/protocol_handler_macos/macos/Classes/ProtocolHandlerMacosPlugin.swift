@@ -11,7 +11,6 @@ public class ProtocolHandlerMacosPlugin: NSObject, FlutterPlugin, FlutterStreamH
         let instance = ProtocolHandlerMacosPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
         registrar.addApplicationDelegate(instance)
-        
         let eventChannel = FlutterEventChannel(name: "dev.leanflutter.plugins/protocol_handler_event", binaryMessenger: registrar.messenger)
         eventChannel.setStreamHandler(instance)
     }
