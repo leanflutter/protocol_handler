@@ -30,7 +30,7 @@ public class ProtocolHandlerPlugin implements FlutterPlugin, MethodCallHandler, 
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "protocol_handler");
+        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "dev.leanflutter.plugins/protocol_handler");
         channel.setMethodCallHandler(this);
     }
 

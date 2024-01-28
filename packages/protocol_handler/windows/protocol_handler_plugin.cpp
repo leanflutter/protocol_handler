@@ -54,7 +54,7 @@ void ProtocolHandlerPlugin::RegisterWithRegistrar(
   auto plugin = std::make_unique<ProtocolHandlerPlugin>(
       registrar,
       std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
-          registrar->messenger(), "protocol_handler",
+          registrar->messenger(), "dev.leanflutter.plugins/protocol_handler",
           &flutter::StandardMethodCodec::GetInstance()));
   plugin->channel()->SetMethodCallHandler(
       [plugin_pointer = plugin.get()](const auto& call, auto result) {

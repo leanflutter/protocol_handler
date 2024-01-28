@@ -13,7 +13,7 @@ public class ProtocolHandlerPlugin: NSObject, FlutterPlugin,FlutterAppLifecycleD
     }
     
      public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "protocol_handler", binaryMessenger: registrar.messenger)
+        let channel = FlutterMethodChannel(name: "dev.leanflutter.plugins/protocol_handler", binaryMessenger: registrar.messenger)
         let instance = ProtocolHandlerPlugin()
         _instance = instance
         instance.channel = channel

@@ -7,7 +7,7 @@ public class SwiftProtocolHandlerPlugin: NSObject, FlutterPlugin {
     private var _initialUrl: String?
     
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "protocol_handler", binaryMessenger: registrar.messenger())
+        let channel = FlutterMethodChannel(name: "dev.leanflutter.plugins/protocol_handler", binaryMessenger: registrar.messenger())
         let instance = SwiftProtocolHandlerPlugin()
         instance.channel = channel
         registrar.addMethodCallDelegate(instance, channel: channel)

@@ -6,7 +6,9 @@ import 'package:protocol_handler_platform_interface/src/protocol_handler_platfor
 class MethodChannelProtocolHandler extends ProtocolHandlerPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('protocol_handler');
+  final methodChannel = const MethodChannel(
+    'dev.leanflutter.plugins/protocol_handler',
+  );
 
   @override
   Future<String?> getPlatformVersion() async {

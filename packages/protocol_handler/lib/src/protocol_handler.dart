@@ -13,7 +13,7 @@ class ProtocolHandler {
   /// The shared instance of [ProtocolHandler].
   static final ProtocolHandler instance = ProtocolHandler._();
 
-  final MethodChannel _channel = const MethodChannel('protocol_handler');
+  final MethodChannel _channel = const MethodChannel('dev.leanflutter.plugins/protocol_handler');
 
   final ObserverList<ProtocolListener> _listeners =
       ObserverList<ProtocolListener>();
