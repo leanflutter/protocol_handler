@@ -4,6 +4,7 @@ version: 0.2.0
 homepage: https://github.com/leanflutter/protocol_handler
 
 platforms:
+  android:
   ios:
   macos:
   windows:
@@ -15,6 +16,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  protocol_handler_android: ^0.2.0
   protocol_handler_ios: ^0.2.0
   protocol_handler_macos: ^0.2.0
   protocol_handler_platform_interface: ^0.2.0
@@ -30,8 +32,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: org.leanflutter.plugins.protocol_handler
-        pluginClass: ProtocolHandlerPlugin
+        default_package: protocol_handler_android
       ios:
         default_package: protocol_handler_ios
       macos:

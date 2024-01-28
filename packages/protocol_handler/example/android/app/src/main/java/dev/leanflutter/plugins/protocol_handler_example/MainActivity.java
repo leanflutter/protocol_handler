@@ -1,4 +1,4 @@
-package org.leanflutter.plugins.protocol_handler_example;
+package dev.leanflutter.plugins.protocol_handler_example;
 
 import io.flutter.embedding.android.FlutterActivity;
 

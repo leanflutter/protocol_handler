@@ -75,7 +75,7 @@ dependencies:
 
 ```diff
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.leanflutter.plugins.protocol_handler_example">
+    package="dev.leanflutter.plugins.protocol_handler_example">
 
     <application
         android:name="${applicationName}"
