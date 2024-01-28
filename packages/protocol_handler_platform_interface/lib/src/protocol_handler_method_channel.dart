@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-
-import 'protocol_handler_platform_interface.dart';
+import 'package:protocol_handler_platform_interface/src/protocol_handler_platform_interface.dart';
 
 /// An implementation of [ProtocolHandlerPlatform] that uses method channels.
 class MethodChannelProtocolHandler extends ProtocolHandlerPlatform {
@@ -11,7 +10,8 @@ class MethodChannelProtocolHandler extends ProtocolHandlerPlatform {
 
   @override
   Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version =
+        await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
 }

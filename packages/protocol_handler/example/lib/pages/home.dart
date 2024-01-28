@@ -5,10 +5,10 @@ import 'package:protocol_handler/protocol_handler.dart';
 import 'package:window_manager/window_manager.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> with ProtocolListener {
@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> with ProtocolListener {
     super.dispose();
   }
 
-  void _init() async {
+  Future<void> _init() async {
     _initialUrl = await protocolHandler.getInitialUrl();
     setState(() {});
   }
