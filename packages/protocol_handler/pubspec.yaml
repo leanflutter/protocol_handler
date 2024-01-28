@@ -20,7 +20,7 @@ dependencies:
   protocol_handler_ios: ^0.2.0
   protocol_handler_macos: ^0.2.0
   protocol_handler_platform_interface: ^0.2.0
-  win32_registry: ^1.0.2
+  protocol_handler_windows: ^0.2.0
 
 dev_dependencies:
   dependency_validator: ^3.0.0
@@ -38,4 +38,4 @@ flutter:
       macos:
         default_package: protocol_handler_macos
       windows:
-        pluginClass: ProtocolHandlerPlugin
+        default_package: protocol_handler_windows

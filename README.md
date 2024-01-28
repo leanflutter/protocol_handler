@@ -21,7 +21,7 @@ English | [简体中文](./README-ZH.md)
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [protocol_handler](#protocol_handler)
+- [protocol\_handler](#protocol_handler)
   - [Platform Support](#platform-support)
   - [Screenshots](#screenshots)
   - [Quick Start](#quick-start)
@@ -253,10 +253,11 @@ Change the file `windows/runner/main.cpp` as follows:
 #include "flutter_window.h"
 #include "utils.h"
 
-+#include <protocol_handler/protocol_handler_plugin.h>
++#include <protocol_handler_windows/protocol_handler_windows_plugin_c_api.h>
 
 int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                       _In_ wchar_t *command_line, _In_ int show_command) {
++  // Replace protocol_handler_example with your_window_title.
 +  HWND hwnd = ::FindWindow(L"FLUTTER_RUNNER_WIN32_WINDOW", L"protocol_handler_example");
 +  if (hwnd != NULL) {
 +    DispatchToProtocolHandler(hwnd);

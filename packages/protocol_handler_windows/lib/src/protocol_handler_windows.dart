@@ -1,14 +1,16 @@
 import 'dart:io';
 
-import 'package:protocol_handler/src/protocol_registrar.dart';
+import 'package:protocol_handler_platform_interface/protocol_handler_platform_interface.dart';
 import 'package:win32_registry/win32_registry.dart';
 
-class ProtocolRegistrarImplWindows extends ProtocolRegistrar {
-  ProtocolRegistrarImplWindows._();
+class ProtocolHandlerWindows extends MethodChannelProtocolHandler {
+  /// The [ProtocolHandlerWindows] constructor.
+  ProtocolHandlerWindows() : super();
 
-  /// The shared instance of [ProtocolRegistrarImplWindows].
-  static final ProtocolRegistrarImplWindows instance =
-      ProtocolRegistrarImplWindows._();
+  /// Registers this class as the default instance of [ProtocolHandlerWindows].
+  static void registerWith() {
+    ProtocolHandlerPlatform.instance = ProtocolHandlerWindows();
+  }
 
   @override
   Future<void> register(String scheme) async {

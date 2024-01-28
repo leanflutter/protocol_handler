@@ -3,7 +3,8 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  protocol_handler
+  protocol_handler_windows
+  screen_retriever
   window_manager
 )
 

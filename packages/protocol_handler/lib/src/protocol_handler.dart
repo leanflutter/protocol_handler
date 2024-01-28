@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:protocol_handler/src/protocol_registrar.dart';
 import 'package:protocol_handler_platform_interface/protocol_handler_platform_interface.dart';
 
 class ProtocolHandler {
@@ -61,15 +60,15 @@ class ProtocolHandler {
     }
   }
 
+  /// A broadcast stream of incoming protocol urls.
+  Stream<String?> get onUrlReceived => _platform.onUrlReceived;
+
   /// Register a custom protocol
   ///
   /// [scheme] is the custom protocol scheme, e.g. `myapp`
   Future<void> register(String scheme) {
-    return protocolRegistrar.register(scheme);
+    return _platform.register(scheme);
   }
-
-  /// A broadcast stream of incoming protocol urls.
-  Stream<String?> get onUrlReceived => _platform.onUrlReceived;
 
   /// If the app launch was triggered by an protocol, it will give the link url,
   /// otherwise it will give null.
