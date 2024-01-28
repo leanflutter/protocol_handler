@@ -8,7 +8,7 @@
 PRODUCT_NAME = protocol_handler_example
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = org.leanflutter.plugins.protocolHandlerExample
+PRODUCT_BUNDLE_IDENTIFIER = dev.leanflutter.plugins.protocol_handler_example
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2022 org.leanflutter.plugins. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2024 LeanFlutter. All rights reserved.
