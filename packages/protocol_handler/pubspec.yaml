@@ -20,7 +20,8 @@ dependencies:
   protocol_handler_ios: ^0.2.0
   protocol_handler_macos: ^0.2.0
   protocol_handler_platform_interface: ^0.2.0
-  protocol_handler_windows: ^0.2.0
+  protocol_handler_windows:
+    path: '../protocol_handler_windows'
 
 dev_dependencies:
   dependency_validator: ^3.0.0
