@@ -1,0 +1,153 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "protocol_handler",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "protocol_handler",
+            "cwd": "packages\\protocol_handler",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "protocol_handler (profile mode)",
+            "cwd": "packages\\protocol_handler",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "protocol_handler (release mode)",
+            "cwd": "packages\\protocol_handler",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "protocol_handler_android",
+            "cwd": "packages\\protocol_handler_android",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "protocol_handler_android (profile mode)",
+            "cwd": "packages\\protocol_handler_android",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "protocol_handler_android (release mode)",
+            "cwd": "packages\\protocol_handler_android",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "protocol_handler_ios",
+            "cwd": "packages\\protocol_handler_ios",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "protocol_handler_ios (profile mode)",
+            "cwd": "packages\\protocol_handler_ios",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "protocol_handler_ios (release mode)",
+            "cwd": "packages\\protocol_handler_ios",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "protocol_handler_macos",
+            "cwd": "packages\\protocol_handler_macos",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "protocol_handler_macos (profile mode)",
+            "cwd": "packages\\protocol_handler_macos",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "protocol_handler_macos (release mode)",
+            "cwd": "packages\\protocol_handler_macos",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "protocol_handler_platform_interface",
+            "cwd": "packages\\protocol_handler_platform_interface",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "protocol_handler_platform_interface (profile mode)",
+            "cwd": "packages\\protocol_handler_platform_interface",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "protocol_handler_platform_interface (release mode)",
+            "cwd": "packages\\protocol_handler_platform_interface",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "protocol_handler_windows",
+            "cwd": "packages\\protocol_handler_windows",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "protocol_handler_windows (profile mode)",
+            "cwd": "packages\\protocol_handler_windows",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "protocol_handler_windows (release mode)",
+            "cwd": "packages\\protocol_handler_windows",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "example",
+            "cwd": "packages\\protocol_handler\\example",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "example (profile mode)",
+            "cwd": "packages\\protocol_handler\\example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "example (release mode)",
+            "cwd": "packages\\protocol_handler\\example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
