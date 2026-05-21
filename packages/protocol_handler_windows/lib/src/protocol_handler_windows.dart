@@ -17,20 +17,10 @@ class ProtocolHandlerWindows extends MethodChannelProtocolHandler {
     String appPath = Platform.resolvedExecutable;
 
     String protocolRegKey = 'Software\\Classes\\$scheme';
-    RegistryValue protocolRegValue = const RegistryValue(
-      'URL Protocol',
-      RegistryValueType.string,
-      '',
-    );
     String protocolCmdRegKey = 'shell\\open\\command';
-    RegistryValue protocolCmdRegValue = RegistryValue(
-      '',
-      RegistryValueType.string,
-      '$appPath "%1"',
-    );
 
-    final regKey = Registry.currentUser.createKey(protocolRegKey);
-    regKey.createValue(protocolRegValue);
-    regKey.createKey(protocolCmdRegKey).createValue(protocolCmdRegValue);
+    final regKey = CURRENT_USER.create(protocolRegKey);
+    regKey.setValue('URL Protocol', RegistryValue.string(''));
+    regKey.create(protocolCmdRegKey).setValue('', RegistryValue.string('$appPath "%1"'));
   }
 }
