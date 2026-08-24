@@ -1,4 +1,4 @@
-package dev.stan-at-work.plugins.protocol_handler_plus;
+package dev.stan_at_work.plugins.protocol_handler_plus;
 
 import android.content.Intent;
 
@@ -33,9 +33,9 @@ public class ProtocolHandlerPlusAndroidPlugin implements FlutterPlugin, MethodCa
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "dev.stan-at-work.plugins/protocol_handler_plus");
+        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "dev.stan_at_work.plugins/protocol_handler_plus");
         channel.setMethodCallHandler(this);
-        eventChannel = new EventChannel(flutterPluginBinding.getBinaryMessenger(), "dev.stan-at-work.plugins/protocol_handler_plus_event");
+        eventChannel = new EventChannel(flutterPluginBinding.getBinaryMessenger(), "dev.stan_at_work.plugins/protocol_handler_plus_event");
         eventChannel.setStreamHandler(this);
     }
 

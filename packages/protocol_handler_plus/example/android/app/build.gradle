@@ -23,7 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "dev.stan-at-work.plugins.protocol_handler_plus_example"
+    namespace "dev.stan_at_work.plugins.protocol_handler_plus_example"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -34,7 +34,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "dev.stan-at-work.plugins.protocol_handler_plus_example"
+        applicationId "dev.stan_at_work.plugins.protocol_handler_plus_example"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion flutter.minSdkVersion

@@ -7,7 +7,7 @@ void main() {
 
   MethodChannelProtocolHandlerPlus platform = MethodChannelProtocolHandlerPlus();
   const MethodChannel channel = MethodChannel(
-    'dev.stan-at-work.plugins/protocol_handler_plus',
+    'dev.stan_at_work.plugins/protocol_handler_plus',
   );
 
   setUp(() {

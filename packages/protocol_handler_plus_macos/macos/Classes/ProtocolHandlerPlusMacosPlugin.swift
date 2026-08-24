@@ -7,11 +7,11 @@ public class ProtocolHandlerPlusMacosPlugin: NSObject, FlutterPlugin, FlutterStr
     private var _initialUrl: String?
     
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "dev.stan-at-work.plugins/protocol_handler_plus", binaryMessenger: registrar.messenger)
+        let channel = FlutterMethodChannel(name: "dev.stan_at_work.plugins/protocol_handler_plus", binaryMessenger: registrar.messenger)
         let instance = ProtocolHandlerPlusMacosPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
         registrar.addApplicationDelegate(instance)
-        let eventChannel = FlutterEventChannel(name: "dev.stan-at-work.plugins/protocol_handler_plus_event", binaryMessenger: registrar.messenger)
+        let eventChannel = FlutterEventChannel(name: "dev.stan_at_work.plugins/protocol_handler_plus_event", binaryMessenger: registrar.messenger)
         eventChannel.setStreamHandler(instance)
     }
     

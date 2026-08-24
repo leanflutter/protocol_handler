@@ -1,4 +1,4 @@
-package dev.stan-at-work.plugins.protocol_handler_plus;
+package dev.stan_at_work.plugins.protocol_handler_plus;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;

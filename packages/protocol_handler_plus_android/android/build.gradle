@@ -1,4 +1,4 @@
-group 'dev.stan-at-work.plugins.protocol_handler_plus'
+group 'dev.stan_at_work.plugins.protocol_handler_plus'
 version '1.0'
 
 buildscript {
@@ -23,7 +23,7 @@ apply plugin: 'com.android.library'
 
 android {
     if (project.android.hasProperty("namespace")) {
-        namespace 'dev.stan-at-work.plugins.protocol_handler_plus'
+        namespace 'dev.stan_at_work.plugins.protocol_handler_plus'
     }
 
     compileSdkVersion 33

@@ -7,13 +7,13 @@ class MethodChannelProtocolHandlerPlus extends ProtocolHandlerPlusPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   final methodChannel = const MethodChannel(
-    'dev.stan-at-work.plugins/protocol_handler_plus',
+    'dev.stan_at_work.plugins/protocol_handler_plus',
   );
 
   /// The event channel used to receive events from the native platform.
   @visibleForTesting
   final eventChannel = const EventChannel(
-    'dev.stan-at-work.plugins/protocol_handler_plus_event',
+    'dev.stan_at_work.plugins/protocol_handler_plus_event',
   );
 
   @override

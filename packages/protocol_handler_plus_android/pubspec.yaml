@@ -1,6 +1,6 @@
 name: protocol_handler_plus_android
 description: Android implementation of the protocol_handler_plus plugin.
-version: 1.0.2
+version: 2.0.0
 repository: https://github.com/stan-at-work/protocol_handler_plus/tree/main/packages/protocol_handler_plus_android
 homepage: https://github.com/stan-at-work/protocol_handler_plus/tree/main/packages/protocol_handler_plus_android
 issue_tracker: https://github.com/stan-at-work/protocol_handler_plus/issues
@@ -20,7 +20,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  protocol_handler_plus_platform_interface: ^1.0.2
+  protocol_handler_plus_platform_interface: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -31,5 +31,5 @@ flutter:
     implements: protocol_handler_plus
     platforms:
       android:
-        package: dev.stan-at-work.plugins.protocol_handler_plus
+        package: dev.stan_at_work.plugins.protocol_handler_plus
         pluginClass: ProtocolHandlerPlusAndroidPlugin

@@ -20,7 +20,7 @@ void ProtocolHandlerPlusWindowsPlugin::RegisterWithRegistrar(
     flutter::PluginRegistrarWindows* registrar) {
   auto channel =
       std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
-          registrar->messenger(), "dev.stan-at-work.plugins/protocol_handler_plus",
+          registrar->messenger(), "dev.stan_at_work.plugins/protocol_handler_plus",
           &flutter::StandardMethodCodec::GetInstance());
 
   auto plugin = std::make_unique<ProtocolHandlerPlusWindowsPlugin>(registrar);
@@ -33,7 +33,7 @@ void ProtocolHandlerPlusWindowsPlugin::RegisterWithRegistrar(
   auto event_channel =
       std::make_unique<flutter::EventChannel<flutter::EncodableValue>>(
           registrar->messenger(),
-          "dev.stan-at-work.plugins/protocol_handler_plus_event",
+          "dev.stan_at_work.plugins/protocol_handler_plus_event",
           &flutter::StandardMethodCodec::GetInstance());
   auto streamHandler = std::make_unique<flutter::StreamHandlerFunctions<>>(
       [plugin_pointer = plugin.get()](

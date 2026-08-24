@@ -1,3 +1,7 @@
+## 2.0.0
+
+* **BREAKING**: `MethodChannelProtocolHandlerPlus` now uses the channel names `dev.stan_at_work.plugins/protocol_handler_plus` and `dev.stan_at_work.plugins/protocol_handler_plus_event` instead of the `dev.stan-at-work.plugins/...` variants. Every platform implementation must be on `2.0.0` or later to match.
+
 ## 1.0.2
 
 * Update version and metadata of the repository

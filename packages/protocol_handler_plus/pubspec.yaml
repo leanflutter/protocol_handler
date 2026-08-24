@@ -1,6 +1,6 @@
 name: protocol_handler_plus
 description: This plugin allows Flutter apps to register and handle custom protocols (i.e. deep linking).
-version: 1.0.2+1
+version: 2.0.0
 homepage: https://github.com/stan-at-work/protocol_handler_plus/tree/main/packages/protocol_handler_plus
 repository: https://github.com/stan-at-work/protocol_handler_plus/tree/main/packages/protocol_handler_plus
 issue_tracker: https://github.com/stan-at-work/protocol_handler_plus/issues
@@ -35,11 +35,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-  protocol_handler_plus_android: ^1.0.2
-  protocol_handler_plus_ios: ^1.0.2
-  protocol_handler_plus_macos: ^1.0.2
-  protocol_handler_plus_platform_interface: ^1.0.2
-  protocol_handler_plus_windows: ^1.0.2
+  protocol_handler_plus_android: ^2.0.0
+  protocol_handler_plus_ios: ^2.0.0
+  protocol_handler_plus_macos: ^2.0.0
+  protocol_handler_plus_platform_interface: ^2.0.0
+  protocol_handler_plus_windows: ^2.0.0
 
   # protocol_handler_plus_android:
   #   path: ../protocol_handler_plus_android

@@ -48,7 +48,7 @@ Change the file `android/app/src/main/AndroidManifest.xml` as follows:
 
 ```diff
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="dev.stan-at-work.plugins.protocol_handler_plus_example">
+    package="dev.stan_at_work.plugins.protocol_handler_plus_example">
 
     <application
         android:name="${applicationName}"
