@@ -4,3 +4,4 @@
 *.iml
 pubspec_overrides.yaml
 pubspec.lock
+PUBLISHING.md
