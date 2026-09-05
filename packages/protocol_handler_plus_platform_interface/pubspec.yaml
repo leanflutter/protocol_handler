@@ -1,6 +1,6 @@
 name: protocol_handler_plus_platform_interface
 description: A common platform interface for the protocol_handler_plus plugin.
-version: 2.0.0
+version: 2.0.1
 homepage: https://github.com/stan-at-work/protocol_handler_plus/blob/main/packages/protocol_handler_plus_platform_interface
 repository: https://github.com/stan-at-work/protocol_handler_plus/blob/main/packages/protocol_handler_plus_platform_interface
 issue_tracker: https://github.com/stan-at-work/protocol_handler_plus/issues

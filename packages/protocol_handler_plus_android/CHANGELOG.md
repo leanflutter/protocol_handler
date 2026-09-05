@@ -1,3 +1,7 @@
+## 2.0.1
+
+* Republish alongside the `protocol_handler_plus_macos` build fix. No functional changes.
+
 ## 2.0.0
 
 * **BREAKING**: Renamed the Java package from `dev.stan-at-work.plugins.protocol_handler_plus` to `dev.stan_at_work.plugins.protocol_handler_plus`, since hyphens are not valid in Java package names. This also updates the Gradle `group` and `namespace`, the `package` attribute in `AndroidManifest.xml` and the `pluginClass` package registered in pubspec.yaml.

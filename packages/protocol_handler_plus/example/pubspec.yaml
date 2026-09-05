@@ -23,6 +23,18 @@ dependencies:
   uni_platform: ^0.1.3
   window_manager: ^0.5.2
 
+dependency_overrides:
+  protocol_handler_plus_android:
+    path: ../../protocol_handler_plus_android
+  protocol_handler_plus_ios:
+    path: ../../protocol_handler_plus_ios
+  protocol_handler_plus_macos:
+    path: ../../protocol_handler_plus_macos
+  protocol_handler_plus_platform_interface:
+    path: ../../protocol_handler_plus_platform_interface
+  protocol_handler_plus_windows:
+    path: ../../protocol_handler_plus_windows
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

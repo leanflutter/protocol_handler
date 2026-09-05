@@ -1,3 +1,8 @@
+## 2.0.1
+
+* Fix macOS build failure (`cannot find 'ProtocolHandlerPlusPlusMacosPlugin' in scope`) caused by a `pluginClass` typo in `protocol_handler_plus_macos`.
+* Bump all platform implementation dependencies to `^2.0.1`.
+
 ## 2.0.0
 
 * **BREAKING**: Renamed the plugin identifier from `dev.stan-at-work` to `dev.stan_at_work`. Hyphens are not valid in Java package names, so the method channel (`dev.stan_at_work.plugins/protocol_handler_plus`), the event channel (`dev.stan_at_work.plugins/protocol_handler_plus_event`) and the Android package all changed. Apps that reference the old identifier (e.g. the `package` attribute in `AndroidManifest.xml`) must be updated.

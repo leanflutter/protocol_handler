@@ -1,6 +1,6 @@
 name: protocol_handler_plus
 description: This plugin allows Flutter apps to register and handle custom protocols (i.e. deep linking).
-version: 2.0.0
+version: 2.0.1
 homepage: https://github.com/stan-at-work/protocol_handler_plus/tree/main/packages/protocol_handler_plus
 repository: https://github.com/stan-at-work/protocol_handler_plus/tree/main/packages/protocol_handler_plus
 issue_tracker: https://github.com/stan-at-work/protocol_handler_plus/issues
@@ -18,28 +18,28 @@ environment:
   sdk: ">=3.10.0 <4.0.0"
   flutter: ">=3.16.0"
 
-# publish_to: none
-# dependency_overrides:
-#   protocol_handler_plus_android:
-#     path: ../protocol_handler_plus_android
-#   protocol_handler_plus_ios:
-#     path: ../protocol_handler_plus_ios
-#   protocol_handler_plus_macos:
-#     path: ../protocol_handler_plus_macos
-#   protocol_handler_plus_platform_interface:
-#     path: ../protocol_handler_plus_platform_interface
-#   protocol_handler_plus_windows:
-#     path: ../protocol_handler_plus_windows
+publish_to: none
+dependency_overrides:
+  protocol_handler_plus_android:
+    path: ../protocol_handler_plus_android
+  protocol_handler_plus_ios:
+    path: ../protocol_handler_plus_ios
+  protocol_handler_plus_macos:
+    path: ../protocol_handler_plus_macos
+  protocol_handler_plus_platform_interface:
+    path: ../protocol_handler_plus_platform_interface
+  protocol_handler_plus_windows:
+    path: ../protocol_handler_plus_windows
 
 dependencies:
   flutter:
     sdk: flutter
 
-  protocol_handler_plus_android: ^2.0.0
-  protocol_handler_plus_ios: ^2.0.0
-  protocol_handler_plus_macos: ^2.0.0
-  protocol_handler_plus_platform_interface: ^2.0.0
-  protocol_handler_plus_windows: ^2.0.0
+  protocol_handler_plus_android: ^2.0.1
+  protocol_handler_plus_ios: ^2.0.1
+  protocol_handler_plus_macos: ^2.0.1
+  protocol_handler_plus_platform_interface: ^2.0.1
+  protocol_handler_plus_windows: ^2.0.1
 
   # protocol_handler_plus_android:
   #   path: ../protocol_handler_plus_android

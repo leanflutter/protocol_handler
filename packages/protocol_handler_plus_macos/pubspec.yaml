@@ -1,6 +1,6 @@
 name: protocol_handler_plus_macos
 description: macOS implementation of the protocol_handler_plus plugin.
-version: 2.0.0
+version: 2.0.1
 repository: https://github.com/stan-at-work/protocol_handler_plus/tree/main/packages/protocol_handler_plus_macos
 homepage: https://github.com/stan-at-work/protocol_handler_plus/tree/main/packages/protocol_handler_plus_macos
 issue_tracker: https://github.com/stan-at-work/protocol_handler_plus/issues
@@ -32,4 +32,4 @@ flutter:
     implements: protocol_handler_plus
     platforms:
       macos:
-        pluginClass: ProtocolHandlerPlusPlusMacosPlugin
+        pluginClass: ProtocolHandlerPlusMacosPlugin

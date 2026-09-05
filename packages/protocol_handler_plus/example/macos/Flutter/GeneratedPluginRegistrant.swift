@@ -10,7 +10,7 @@ import screen_retriever_macos
 import window_manager
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-  ProtocolHandlerPlusPlusMacosPlugin.register(with: registry.registrar(forPlugin: "ProtocolHandlerPlusPlusMacosPlugin"))
+  ProtocolHandlerPlusMacosPlugin.register(with: registry.registrar(forPlugin: "ProtocolHandlerPlusMacosPlugin"))
   ScreenRetrieverMacosPlugin.register(with: registry.registrar(forPlugin: "ScreenRetrieverMacosPlugin"))
   WindowManagerPlugin.register(with: registry.registrar(forPlugin: "WindowManagerPlugin"))
 }
