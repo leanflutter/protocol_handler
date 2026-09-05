@@ -18,18 +18,18 @@ environment:
   sdk: ">=3.10.0 <4.0.0"
   flutter: ">=3.16.0"
 
-publish_to: none
-dependency_overrides:
-  protocol_handler_plus_android:
-    path: ../protocol_handler_plus_android
-  protocol_handler_plus_ios:
-    path: ../protocol_handler_plus_ios
-  protocol_handler_plus_macos:
-    path: ../protocol_handler_plus_macos
-  protocol_handler_plus_platform_interface:
-    path: ../protocol_handler_plus_platform_interface
-  protocol_handler_plus_windows:
-    path: ../protocol_handler_plus_windows
+# publish_to: none
+# dependency_overrides:
+#   protocol_handler_plus_android:
+#     path: ../protocol_handler_plus_android
+#   protocol_handler_plus_ios:
+#     path: ../protocol_handler_plus_ios
+#   protocol_handler_plus_macos:
+#     path: ../protocol_handler_plus_macos
+#   protocol_handler_plus_platform_interface:
+#     path: ../protocol_handler_plus_platform_interface
+#   protocol_handler_plus_windows:
+#     path: ../protocol_handler_plus_windows
 
 dependencies:
   flutter:
