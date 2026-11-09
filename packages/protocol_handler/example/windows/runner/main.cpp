@@ -2,21 +2,17 @@
 #include <flutter/flutter_view_controller.h>
 #include <windows.h>
 
+#include <protocol_handler/protocol_handler_plugin_c_api.h>
+
 #include "flutter_window.h"
 #include "utils.h"
 
-#include <protocol_handler_windows/protocol_handler_windows_plugin_c_api.h>
-
 int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                       _In_ wchar_t *command_line, _In_ int show_command) {
-  // Replace protocol_handler_example with your_window_title.
-  HWND hwnd = ::FindWindow(L"FLUTTER_RUNNER_WIN32_WINDOW", L"protocol_handler_example");
-  if (hwnd != NULL) {
-    DispatchToProtocolHandler(hwnd);
-
-    ::ShowWindow(hwnd, SW_NORMAL);
-    ::SetForegroundWindow(hwnd);
-    return EXIT_FAILURE;
+  // A link opened while the app runs starts a second process: hand its URL to
+  // the running instance and quit before creating a window.
+  if (ProtocolHandlerForwardToRunningInstance()) {
+    return EXIT_SUCCESS;
   }
 
   // Attach to console when present (e.g., 'flutter run') or create a
@@ -39,7 +35,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   FlutterWindow window(project);
   Win32Window::Point origin(10, 10);
   Win32Window::Size size(1280, 720);
-  if (!window.CreateAndShow(L"protocol_handler_example", origin, size)) {
+  if (!window.Create(L"protocol_handler_example", origin, size)) {
     return EXIT_FAILURE;
   }
   window.SetQuitOnClose(true);

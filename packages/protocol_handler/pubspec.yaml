@@ -1,6 +1,6 @@
 name: protocol_handler
 description: This plugin allows Flutter apps to register and handle custom protocols (i.e. deep linking).
-version: 0.2.0
+version: 0.3.0
 homepage: https://github.com/leanflutter/protocol_handler
 
 platforms:
@@ -9,33 +9,37 @@ platforms:
   macos:
   windows:
 
+topics:
+  - deep-linking
+  - url-scheme
+  - protocol-handler
+
 environment:
-  sdk: ">=3.1.0 <4.0.0"
-  flutter: ">=3.16.0"
+  sdk: ^3.13.0
+  flutter: ">=3.47.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  protocol_handler_android: ^0.2.0
-  protocol_handler_ios: ^0.2.0
-  protocol_handler_macos: ^0.2.0
-  protocol_handler_platform_interface: ^0.2.0
-  protocol_handler_windows: ^0.2.0
+  nativeapi: ^0.5.11
 
 dev_dependencies:
   dependency_validator: ^3.0.0
   flutter_test:
     sdk: flutter
-  mostly_reasonable_lints: ^0.1.1
+  flutter_lints: ^6.0.0
 
+# The native parts only capture URLs that arrive before Dart runs and hand them
+# to the nativeapi core library, which implements everything else.
 flutter:
   plugin:
     platforms:
       android:
-        default_package: protocol_handler_android
+        package: dev.leanflutter.plugins.protocol_handler
+        pluginClass: ProtocolHandlerPlugin
       ios:
-        default_package: protocol_handler_ios
+        pluginClass: ProtocolHandlerPlugin
       macos:
-        default_package: protocol_handler_macos
+        pluginClass: ProtocolHandlerPlugin
       windows:
-        default_package: protocol_handler_windows
+        pluginClass: ProtocolHandlerPluginCApi

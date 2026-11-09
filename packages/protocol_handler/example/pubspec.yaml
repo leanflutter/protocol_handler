@@ -3,22 +3,18 @@ description: Demonstrates how to use the protocol_handler plugin.
 publish_to: "none"
 
 environment:
-  sdk: ">=3.1.0 <4.0.0"
+  sdk: ^3.13.0
 
 dependencies:
-  bot_toast: ^4.1.3
   flutter:
     sdk: flutter
-  preference_list: ^0.0.1
   protocol_handler:
     path: ../
-  uni_platform: ^0.1.1
-  window_manager: ^0.3.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mostly_reasonable_lints: ^0.1.1
+  flutter_lints: ^6.0.0
 
 flutter:
   uses-material-design: true
