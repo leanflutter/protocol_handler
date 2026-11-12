@@ -1,6 +1,10 @@
-## Unreleased
+## 0.3.0
 
-* **Breaking:** requires Flutter 3.50 / Dart 3.14 and nativeapi 0.6.0.
+* **Breaking:** rebuilt on nativeapi's protocol handler. Requires Flutter 3.50 / Dart 3.14 and nativeapi 0.6.0. The package is now a single plugin: `protocol_handler_android`, `_ios`, `_macos`, `_windows` and `_platform_interface` are gone.
+* **Breaking:** `register()` completes with a `bool`.
+* The rest of the Dart API is unchanged: `register`, `getInitialUrl`, `onUrlReceived`, `addListener` / `removeListener`, `listeners` and `hasListeners`.
+* URLs that arrive while nothing listens are queued and delivered to the first listener, and a launch URL delivered after `getInitialUrl()` returned null reaches the listeners too.
+* Windows: call `ProtocolHandlerForwardToRunningInstance()` first thing in `wWinMain`, so a second instance forwards its URL to the running one and exits.
 
 ## 0.2.0
 
