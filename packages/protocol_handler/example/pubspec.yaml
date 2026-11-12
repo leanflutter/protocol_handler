@@ -3,11 +3,12 @@ description: Demonstrates how to use the protocol_handler plugin.
 publish_to: "none"
 
 environment:
-  sdk: ^3.13.0
+  sdk: ^3.14.0
 
 dependencies:
   flutter:
     sdk: flutter
+  material_ui: ^1.11.0
   protocol_handler:
     path: ../
 

@@ -15,13 +15,13 @@ topics:
   - protocol-handler
 
 environment:
-  sdk: ^3.13.0
-  flutter: ">=3.47.0"
+  sdk: ^3.14.0
+  flutter: ">=3.50.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  nativeapi: ^0.5.11
+  nativeapi: ^0.6.0
 
 dev_dependencies:
   dependency_validator: ^3.0.0

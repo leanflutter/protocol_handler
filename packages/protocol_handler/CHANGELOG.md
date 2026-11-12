@@ -1,3 +1,7 @@
+## Unreleased
+
+* **Breaking:** requires Flutter 3.50 / Dart 3.14 and nativeapi 0.6.0.
+
 ## 0.2.0
 
 * feat: Convert to federated plugin
