@@ -1,3 +1,9 @@
+## Unreleased
+
+* Fix iOS URL callbacks being lost after plugin registration: retain the lifecycle delegate through the Flutter registrar.
+* Add the complete NativeAPI migration guide and correct the Windows runner instructions.
+* Disable Flutter's built-in deep-link routing in the Android/iOS examples so the plugin owns incoming links.
+
 ## 0.3.0
 
 * **Breaking:** rebuilt on nativeapi's protocol handler. Requires Flutter 3.50 / Dart 3.14 and nativeapi 0.6.0. The package is now a single plugin: `protocol_handler_android`, `_ios`, `_macos`, `_windows` and `_platform_interface` are gone.

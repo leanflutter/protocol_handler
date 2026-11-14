@@ -7,6 +7,9 @@ public class ProtocolHandlerPlugin: NSObject, FlutterPlugin, FlutterSceneLifeCyc
   public static func register(with registrar: FlutterPluginRegistrar) {
     let instance = ProtocolHandlerPlugin()
     NativeAPICore.attach()
+    // Both lifecycle delegate lists are weak. There is no MethodChannel here
+    // to retain the plugin, so keep it alive for the lifetime of this engine.
+    registrar.publish(instance)
     registrar.addApplicationDelegate(instance)
     registrar.addSceneDelegate(instance)
   }

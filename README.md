@@ -12,6 +12,10 @@
 
 This plugin allows Flutter apps to register and handle custom protocols (i.e. deep linking).
 
+**Upgrading from 0.2.x?** Read the [NativeAPI migration guide](MIGRATION.md) for the full API mapping, updated Windows runner, mobile configuration, MSIX behavior and listener cleanup.
+
+The iOS lifecycle-delegate fix is currently on `main` (see [Unreleased](CHANGELOG.md)); use the Git dependency below until the patch is published.
+
 ---
 
 English | [简体中文](./README-ZH.md)
@@ -89,6 +93,7 @@ Change the file `android/app/src/main/AndroidManifest.xml` as follows:
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:windowSoftInputMode="adjustResize">
++            <meta-data android:name="flutter_deeplinking_enabled" android:value="false" />
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
@@ -154,6 +159,8 @@ Change the file `ios/Runner/Info.plist` as follows:
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
++	<key>FlutterDeepLinkingEnabled</key>
++	<false/>
 +	<key>CFBundleURLTypes</key>
 +	<array>
 +		<dict>
@@ -251,18 +258,13 @@ Change the file `windows/runner/main.cpp` as follows:
 #include "flutter_window.h"
 #include "utils.h"
 
-+#include <protocol_handler_windows/protocol_handler_windows_plugin_c_api.h>
++#include <protocol_handler/protocol_handler_plugin_c_api.h>
 
 int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                       _In_ wchar_t *command_line, _In_ int show_command) {
-+  // Replace protocol_handler_example with your_window_title.
-+  HWND hwnd = ::FindWindow(L"FLUTTER_RUNNER_WIN32_WINDOW", L"protocol_handler_example");
-+  if (hwnd != NULL) {
-+    DispatchToProtocolHandler(hwnd);
-+
-+    ::ShowWindow(hwnd, SW_NORMAL);
-+    ::SetForegroundWindow(hwnd);
-+    return EXIT_FAILURE;
++  // Forward a URL to the running instance before creating the engine.
++  if (ProtocolHandlerForwardToRunningInstance()) {
++    return EXIT_SUCCESS;
 +  }
 
   // Attach to console when present (e.g., 'flutter run') or create a
@@ -285,7 +287,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   FlutterWindow window(project);
   Win32Window::Point origin(10, 10);
   Win32Window::Size size(1280, 720);
-  if (!window.CreateAndShow(L"protocol_handler_example", origin, size)) {
+  if (!window.Create(L"protocol_handler_example", origin, size)) {
     return EXIT_FAILURE;
   }
   window.SetQuitOnClose(true);
@@ -318,7 +320,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Register a custom protocol
-  // For macOS platform needs to declare the scheme in ios/Runner/Info.plist
+  // For macOS platform needs to declare the scheme in macos/Runner/Info.plist
   await protocolHandler.register('myprotocol');
 
   runApp(MyApp());

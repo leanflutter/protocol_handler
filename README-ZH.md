@@ -12,6 +12,11 @@
 
 这个插件允许 Flutter 应用注册及处理自定义协议（即深度链接）。
 
+
+**从 0.2.x 升级？** 请阅读 [NativeAPI 迁移指南](MIGRATION.md)，包含完整 API 对照、Windows runner 更新、移动端配置、MSIX 行为和监听器清理。
+
+iOS 生命周期代理的修复目前在 `main`（见 [Unreleased](CHANGELOG.md)）；补丁版本发布前，请使用下方的 Git 依赖。
+
 ---
 
 [English](./README.md) | 简体中文
@@ -89,6 +94,7 @@ dependencies:
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:windowSoftInputMode="adjustResize">
++            <meta-data android:name="flutter_deeplinking_enabled" android:value="false" />
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
@@ -154,6 +160,8 @@ dependencies:
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
++	<key>FlutterDeepLinkingEnabled</key>
++	<false/>
 +	<key>CFBundleURLTypes</key>
 +	<array>
 +		<dict>
@@ -251,18 +259,13 @@ dependencies:
 #include "flutter_window.h"
 #include "utils.h"
 
-+#include <protocol_handler_windows/protocol_handler_windows_plugin_c_api.h>
++#include <protocol_handler/protocol_handler_plugin_c_api.h>
 
 int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                       _In_ wchar_t *command_line, _In_ int show_command) {
-+  // Replace protocol_handler_example with your_window_title.
-+  HWND hwnd = ::FindWindow(L"FLUTTER_RUNNER_WIN32_WINDOW", L"protocol_handler_example");
-+  if (hwnd != NULL) {
-+    DispatchToProtocolHandler(hwnd);
-+
-+    ::ShowWindow(hwnd, SW_NORMAL);
-+    ::SetForegroundWindow(hwnd);
-+    return EXIT_FAILURE;
++  // Forward a URL to the running instance before creating the engine.
++  if (ProtocolHandlerForwardToRunningInstance()) {
++    return EXIT_SUCCESS;
 +  }
 
   // Attach to console when present (e.g., 'flutter run') or create a
@@ -285,7 +288,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   FlutterWindow window(project);
   Win32Window::Point origin(10, 10);
   Win32Window::Size size(1280, 720);
-  if (!window.CreateAndShow(L"protocol_handler_example", origin, size)) {
+  if (!window.Create(L"protocol_handler_example", origin, size)) {
     return EXIT_FAILURE;
   }
   window.SetQuitOnClose(true);
@@ -316,7 +319,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // 注册一个自定义协议。
-  // 对于 macOS 平台需要在 ios/Runner/Info.plist 中声明 scheme。
+  // 对于 macOS 平台需要在 macos/Runner/Info.plist 中声明 scheme。
   await protocolHandler.register('myprotocol');
 
   runApp(MyApp());
